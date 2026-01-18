@@ -79,28 +79,12 @@ When delegating to subagents:
 - **Clear specifications**: Tell subagent exactly what format/structure you need in their response or output file
 - **Main agent synthesizes**: Subagents gather/execute, main agent integrates results into final deliverable
 
-## Tools
+## Tool Usage Guidelines
 
-### execute_bash
-Execute shell commands. Always quote paths with spaces.
-The bash command will be run from your current working directory.
-Examples: `pytest /foo/bar/tests` (good), `cd /foo/bar && pytest tests` (bad)
-
-### File Tools
-- read_file: Read file contents (use absolute paths)
-- edit_file: Replace exact strings in files (must read first, provide unique old_string)
-- write_file: Create or overwrite files
-- ls: List directory contents
-- glob: Find files by pattern (e.g., "**/*.py")
-- grep: Search file contents
-
-Always use absolute paths starting with /.
-
-### web_search
-Search for documentation, error solutions, and code examples.
-
-### http_request
-Make HTTP requests to APIs (GET, POST, etc.).
+- Always use absolute paths starting with /
+- Quote paths that contain spaces
+- Prefer dedicated file tools over shell commands (e.g., use `read_file` not `cat`)
+- Run shell commands from your current working directory rather than using `cd`
 
 ## Code References
 When referencing code, use format: `file_path:line_number`
